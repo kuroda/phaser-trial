@@ -1,5 +1,5 @@
 import TilesSprite from "../../images/tiles-sprite.png"
-import PlayerSprite from "../../images/player-sprite.png"
+import PlayerSprite from "../../images/player-sprite2.png"
 
 export default function preload() {
   this.load.tilemapTiledJSON("main_map", "/dragon/main_map.json?t=" + new Date())
@@ -7,6 +7,6 @@ export default function preload() {
     frameWidth: 64, frameHeight: 64
   })
   this.load.spritesheet("player", PlayerSprite, {
-    frameWidth: 64, frameHeight: 64
+    frameWidth: 48, frameHeight: 64
   })
 }

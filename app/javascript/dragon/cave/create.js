@@ -1,3 +1,5 @@
+import * as CONSTANTS from "../constants";
+
 export default function create() {
   const self = this
   this._cave = {}
@@ -14,8 +16,8 @@ export default function create() {
 function createPlayer(scene) {
   const player = scene.add.sprite(0, 0, "player")
 
-  player.setOrigin(0, 0)
-  player.setFrame(0)
+  player.setOrigin(-0.166, 0.1)
+  player.setFrame(CONSTANTS.FRONT_0)
   player._x = 1
   player._y = 1
 
