@@ -22,3 +22,6 @@ export const FRONT_2 = 8
 export const LEFT_0 = 10
 export const LEFT_1 = 9
 export const LEFT_2 = 11
+
+export const MONSTER_LEFT = 0
+export const MONSTER_RIGHT = 1
