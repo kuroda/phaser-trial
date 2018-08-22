@@ -11,6 +11,13 @@ export default function create() {
   const player = createPlayer(this)
 
   prepareCamera(this)
+
+  this.timedEvent = this.time.addEvent({
+    delay: 5000,
+    callback: moveMonsters,
+    callbackScope: this,
+    loop: true
+  })
 }
 
 function createPlayer(scene) {
@@ -32,4 +39,8 @@ function prepareCamera(scene) {
   scene.cameras.main.startFollow(scene._player)
   scene.cameras.main.name = "caveCamera" // for debugging.
   scene.cameras.main.fadeIn()
+}
+
+function moveMonsters() {
+  console.log("moveMonsters")
 }
