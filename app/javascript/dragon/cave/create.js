@@ -44,6 +44,7 @@ function createMonsters(scene) {
   monster1.setFrame(CONSTANTS.MONSTER_LEFT)
   monster1._x = 1
   monster1._y = 4
+  monster1._direction = CONSTANTS.UP
 
   monsters[0] = monster1
 
