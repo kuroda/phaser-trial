@@ -13,10 +13,10 @@ function getVector(direction) {
   let deltaX = 0;
   let deltaY = 0;
 
-  if (direction == 0) deltaX = -1;
-  else if (direction == 1) deltaX = 1;
-  else if (direction == 2) deltaY = -1;
-  else deltaY = 1;
+  if (direction == CONSTANTS.LEFT) deltaX = -1;
+  else if (direction == CONSTANTS.RIGHT) deltaX = 1;
+  else if (direction == CONSTANTS.UP) deltaY = -1;
+  else if (direction == CONSTANTS.DOWN) deltaY = 1;
 
   return [deltaX, deltaY];
 }
@@ -27,6 +27,7 @@ function changeDirection(scene, monster) {
   })
 
   if (movableDirections.length == 0) {
+    monster._direction = CONSTANTS.NONE;
     return
   }
   else if (movableDirections.length == 1) {
@@ -71,5 +72,11 @@ function movableTo(scene, monster, vector) {
 
   const tile = scene._map.getTileAt(x, y, true, "floor")
 
-  return !CONSTANTS.COLLISION_TILES.includes(tile.index)
+  if (CONSTANTS.COLLISION_TILES.includes(tile.index)) return false
+
+  const found = scene._monsters.find((m, index) => {
+    return (m._index !== monster._index) && (m._x === x) && (m._y === y)
+  })
+
+  return !found
 }

@@ -44,14 +44,15 @@ function createMonsters(scene) {
     [8, 8]
   ]
 
-  coords.forEach(coord => {
+  coords.forEach((coord, index) => {
     const monster = scene.add.sprite(0, 0, "monster")
 
     monster.setOrigin(0, 0)
     monster.setFrame(CONSTANTS.MONSTER_LEFT)
+    monster._index = index
     monster._x = coord[0]
     monster._y = coord[1]
-    monster._direction = CONSTANTS.UP
+    monster._direction = CONSTANTS.NONE
 
     monsters.push(monster)
   })

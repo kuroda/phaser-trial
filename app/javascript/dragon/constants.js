@@ -26,6 +26,7 @@ export const LEFT_2 = 11
 export const MONSTER_LEFT = 0
 export const MONSTER_RIGHT = 1
 
+export const NONE = -1
 export const LEFT = 0
 export const RIGHT = 1
 export const UP = 2
