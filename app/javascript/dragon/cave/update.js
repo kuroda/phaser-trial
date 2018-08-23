@@ -9,24 +9,32 @@ export default function update(time, delta) {
     m.y = m._y * 64;
   })
 
-  const div = document.getElementById("message")
-
   const found = this._monsters.find(m => {
     return (m._x === this._player._x) && (m._y === this._player._y)
   })
 
   if (found) {
-    this.sys.game._over = true
-
-    this.cameras.main.shake(500)
-
-    div.textContent = `Score: ${this.sys.game._score} GAME OVER`
-
-    this.time.delayedCall(500, () => {
-      this.scene.pause();
-    }, [], this);
+    gameOver(this)
   }
   else {
-    div.textContent = `Score: ${this.sys.game._score}`
+    updateMessage(`Score: ${this.sys.game._score}`)
   }
+}
+
+function gameOver(scene) {
+  scene.sys.game._over = true
+
+  scene.cameras.main.shake(500)
+
+  updateMessage(`Score: ${scene.sys.game._score} GAME OVER`)
+
+  scene.time.delayedCall(500, () => {
+    scene.scene.pause();
+  }, [], scene);
+}
+
+function updateMessage(message) {
+  const div = document.getElementById("message")
+
+  div.textContent = message
 }
