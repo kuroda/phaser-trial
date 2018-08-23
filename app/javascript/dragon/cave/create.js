@@ -38,15 +38,23 @@ function createPlayer(scene) {
 function createMonsters(scene) {
   const monsters = []
 
-  const monster1 = scene.add.sprite(0, 0, "monster")
+  const coords = [
+    [1, 4],
+    [4, 6],
+    [8, 8]
+  ]
 
-  monster1.setOrigin(0, 0)
-  monster1.setFrame(CONSTANTS.MONSTER_LEFT)
-  monster1._x = 1
-  monster1._y = 4
-  monster1._direction = CONSTANTS.UP
+  coords.forEach(coord => {
+    const monster = scene.add.sprite(0, 0, "monster")
 
-  monsters[0] = monster1
+    monster.setOrigin(0, 0)
+    monster.setFrame(CONSTANTS.MONSTER_LEFT)
+    monster._x = coord[0]
+    monster._y = coord[1]
+    monster._direction = CONSTANTS.UP
+
+    monsters.push(monster)
+  })
 
   scene._monsters = monsters
 
