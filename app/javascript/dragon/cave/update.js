@@ -29,6 +29,8 @@ function gameOver(scene) {
   updateMessage(`Score: ${scene.sys.game._score} GAME OVER`)
 
   scene.time.delayedCall(500, () => {
+    const div = document.getElementById("game-over");
+    div.style.display = "block";
     scene.scene.pause();
   }, [], scene);
 }

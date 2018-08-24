@@ -24,6 +24,20 @@ dragonGame.start = () => {
     if (sceneName) return game.scene.getScene(sceneName)
   }
 
+  game._restart = () => {
+    game._score = 0
+    game._over = false
+
+    const div = document.getElementById("game-over");
+    div.style.display = "none";
+
+    game.scene.scenes.forEach(s => s.scene.restart())
+    game.scene.switch("main")
+  }
+
+  const button = document.getElementById("js-restart")
+  button.addEventListener("click", event => game._restart())
+
   game._score = 0
 
   bindEventHandlers(game)

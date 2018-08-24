@@ -10,6 +10,7 @@ div#screen {
   position: relative;
 
   div#game-over {
+    display: none;
     position: absolute;
     width: 320px;
     text-align: center;
