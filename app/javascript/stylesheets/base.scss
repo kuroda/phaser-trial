@@ -6,6 +6,31 @@ main {
   margin: 15px;
 }
 
+div#screen {
+  position: relative;
+
+  div#game-over {
+    position: absolute;
+    width: 320px;
+    text-align: center;
+
+    p {
+      color: red;
+      font-size: 48px;
+      text-shadow: 2px 2px 4px pink;
+    }
+
+    span.button {
+      display: inline-block;
+      background-color: green;
+      color: white;
+      border: 1px solid white;
+      padding: 5px;
+      cursor: pointer;
+    }
+  }
+}
+
 div#message {
   width: 310px;
   margin: 5px;
