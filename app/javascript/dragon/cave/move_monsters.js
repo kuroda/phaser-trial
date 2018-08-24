@@ -74,6 +74,8 @@ function movableTo(scene, monster, vector) {
 
   if (CONSTANTS.COLLISION_TILES.includes(tile.index)) return false
 
+  if (scene._monsters === undefined) return false
+
   const found = scene._monsters.find((m, index) => {
     return (m._index !== monster._index) && (m._x === x) && (m._y === y)
   })
