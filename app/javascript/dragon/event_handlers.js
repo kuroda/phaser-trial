@@ -25,6 +25,8 @@ function Space(scene, event) {
     SpaceKeydownOnMain(scene, event)
   else if (scene.scene.key === "cave")
     SpaceKeydownOnCave(scene, event)
+  else if (scene.scene.key === "cave2")
+    SpaceKeydownOnCave2(scene, event)
 }
 
 function SpaceKeydownOnMain(scene, event) {
@@ -61,6 +63,43 @@ function SpaceKeydownOnCave(scene, event) {
       if (progress === 1) {
         scene.scene.switch("main")
         scene.cameras.main.fadeIn()
+      }
+    })
+  }
+  else if (floorTile.index === CONSTANTS.HOLE) {
+    scene._bgm.pause()
+    scene.cameras.main.fadeOut(1000, 0, 0, 0, (camera, progress) => {
+      if (progress === 1) {
+        scene.scene.switch("cave2")
+        scene.cameras.main.fadeIn()
+
+        const cave2Scene = scene.sys.game.scene.getScene("cave2")
+        if (cave2Scene._bgm) caveScene._bgm.resume()
+      }
+    })
+  }
+}
+
+function SpaceKeydownOnCave2(scene, event) {
+  const treasure =
+    scene._map.getTileAt(scene._player._x, scene._player._y, true, "treasures")
+
+  const floorTile =
+    scene._map.getTileAt(scene._player._x, scene._player._y, true, "floor")
+
+  if (treasure.index === CONSTANTS.TREASURE) {
+    scene._treasuresLayer.removeTileAt(scene._player._x, scene._player._y)
+    scene.sys.game._score++
+  }
+  else if (floorTile.index === CONSTANTS.EXIT) {
+    scene._bgm.pause()
+    scene.cameras.main.fadeOut(1000, 0, 0, 0, (camera, progress) => {
+      if (progress === 1) {
+        scene.scene.switch("cave")
+        scene.cameras.main.fadeIn()
+
+        const caveScene = scene.sys.game.scene.getScene("cave")
+        if (caveScene._bgm) caveScene._bgm.resume()
       }
     })
   }

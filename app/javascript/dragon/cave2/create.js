@@ -4,11 +4,11 @@ import moveMonsters from "./move_monsters"
 export default function create() {
   const self = this
   this._cave = {}
-  this._map = this.make.tilemap({key: "cave_map"})
+  this._map = this.make.tilemap({key: "cave2_map"})
   const tiles = this._map.addTilesetImage("tiles")
   this._floorLayer = this._map.createDynamicLayer("floor", tiles, 0, 0);
   this._treasuresLayer = this._map.createDynamicLayer("treasures", tiles, 0, 0);
-  this._bgm = this.sound.add("cave")
+  this._bgm = this.sound.add("cave2")
   this._bgm.play({ loop: true })
 
   const player = createPlayer(this)
@@ -29,8 +29,8 @@ function createPlayer(scene) {
 
   player.setOrigin(-0.166, 0.1)
   player.setFrame(CONSTANTS.FRONT_0)
-  player._x = 1
-  player._y = 1
+  player._x = 8
+  player._y = 8
 
   scene._player = player
 
@@ -41,9 +41,8 @@ function createMonsters(scene) {
   const monsters = []
 
   const coords = [
-    [1, 4],
-    [4, 6],
-    [8, 8]
+    [3, 3],
+    [2, 8]
   ]
 
   coords.forEach((coord, index) => {

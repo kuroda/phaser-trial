@@ -1,13 +1,13 @@
 import Phaser from "phaser/dist/phaser.min"
 
-import preload from "./cave/preload"
-import create from "./cave/create"
-import update from "./cave/update"
+import preload from "./cave2/preload"
+import create from "./cave2/create"
+import update from "./cave2/update"
 
-const caveScene = new Phaser.Scene("cave")
+const cave2Scene = new Phaser.Scene("cave2")
 
-caveScene.preload = preload
-caveScene.create = create
-caveScene.update = update
+cave2Scene.preload = preload
+cave2Scene.create = create
+cave2Scene.update = update
 
-export default caveScene
+export default cave2Scene
