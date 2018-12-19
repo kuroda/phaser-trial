@@ -8,8 +8,7 @@ const config = {
   parent: "screen",
   width: 320,
   height: 320,
-  // scene: [mainScene, caveScene]
-  scene: [caveScene, mainScene]
+  scene: [mainScene, caveScene]
 }
 
 const dragonGame = {}
