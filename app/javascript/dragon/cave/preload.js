@@ -13,4 +13,5 @@ export default function preload() {
   this.load.spritesheet("monster", MonsterSprite, {
     frameWidth: 64, frameHeight: 64
   })
+  this.load.audio("cave", "/dragon/cave.mp3")
 }

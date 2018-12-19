@@ -36,6 +36,9 @@ function SpaceKeydownOnMain(scene, event) {
       if (progress === 1) {
         scene.scene.switch("cave")
         scene.cameras.main.fadeIn()
+
+        const caveScene = scene.sys.game.scene.getScene("cave")
+        if (caveScene._bgm) caveScene._bgm.resume()
       }
     })
   }
@@ -53,6 +56,7 @@ function SpaceKeydownOnCave(scene, event) {
     scene.sys.game._score++
   }
   else if (floorTile.index === CONSTANTS.EXIT) {
+    scene._bgm.pause()
     scene.cameras.main.fadeOut(1000, 0, 0, 0, (camera, progress) => {
       if (progress === 1) {
         scene.scene.switch("main")

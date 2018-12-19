@@ -8,6 +8,8 @@ export default function create() {
   const tiles = this._map.addTilesetImage("tiles")
   this._floorLayer = this._map.createDynamicLayer("floor", tiles, 0, 0);
   this._treasuresLayer = this._map.createDynamicLayer("treasures", tiles, 0, 0);
+  this._bgm = this.sound.add("cave")
+  this._bgm.play({ loop: true })
 
   const player = createPlayer(this)
   const monsters = createMonsters(this)
