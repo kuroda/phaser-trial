@@ -12,7 +12,9 @@ export default function create() {
   this._bgm.play({ loop: true })
 
   const player = createPlayer(this)
+  const strongPlayer = createStrongPlayer(this)
   const monsters = createMonsters(this)
+  const hearts = createHearts(this)
 
   prepareCamera(this)
 
@@ -35,6 +37,17 @@ function createPlayer(scene) {
   scene._player = player
 
   return player
+}
+
+function createStrongPlayer(scene) {
+  const strongPlayer = scene.add.sprite(0, 0, "strongPlayer")
+
+  strongPlayer.setOrigin(-0.166, 0.1)
+  strongPlayer.setFrame(CONSTANTS.FRONT_0)
+
+  scene._strongPlayer = strongPlayer
+
+  return strongPlayer
 }
 
 function createMonsters(scene) {
@@ -62,6 +75,33 @@ function createMonsters(scene) {
   scene._monsters = monsters
 
   return monsters
+}
+
+function createHearts(scene) {
+  const hearts = []
+
+  const coords = [
+    [1, 6],
+    [5, 3],
+    [8, 4]
+  ]
+
+  coords.forEach((coord, index) => {
+    const heart = scene.add.sprite(0, 0, "heart")
+
+    heart.setOrigin(0, 0)
+    heart.setFrame(0)
+    heart._index = index
+    heart._x = coord[0]
+    heart._y = coord[1]
+    heart._direction = CONSTANTS.NONE
+
+    hearts.push(heart)
+  })
+
+  scene._hearts = hearts
+
+  return hearts
 }
 
 function prepareCamera(scene) {

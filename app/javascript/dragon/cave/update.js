@@ -9,6 +9,11 @@ export default function update(time, delta) {
     m.y = m._y * 64;
   })
 
+  this._hearts.forEach(h => {
+    h.x = h._x * 64;
+    h.y = h._y * 64;
+  })
+
   const found = this._monsters.find(m => {
     return (m._x === this._player._x) && (m._y === this._player._y)
   })
