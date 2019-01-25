@@ -33,6 +33,7 @@ function createPlayer(scene) {
   player.setFrame(CONSTANTS.FRONT_0)
   player._x = 1
   player._y = 1
+  player._strong = false
 
   scene._player = player
 
