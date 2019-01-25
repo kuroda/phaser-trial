@@ -26,8 +26,9 @@ export default function update(time, delta) {
     h.y = h._y * 64;
   })
 
-  const found = this._monsters.find(m => {
-    return (m._x === this._player._x) && (m._y === this._player._y)
+  const monster = this._monsters.find(m => {
+    return (m.alpha === 1.0) &&
+      (m._x === this._player._x) && (m._y === this._player._y)
   })
 
   const heart = this._hearts.find(h => {
@@ -35,8 +36,13 @@ export default function update(time, delta) {
       (h._x === this._player._x) && (h._y === this._player._y)
   })
 
-  if (found) {
-    gameOver(this)
+  if (monster) {
+    if (this._player._strong) {
+      monster.setAlpha(0.0)
+    }
+    else {
+      gameOver(this)
+    }
   }
   else {
     if (heart) {
