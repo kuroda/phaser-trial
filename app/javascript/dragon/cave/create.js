@@ -44,6 +44,7 @@ function createStrongPlayer(scene) {
 
   strongPlayer.setOrigin(-0.166, 0.1)
   strongPlayer.setFrame(CONSTANTS.FRONT_0)
+  strongPlayer.setAlpha(0.0)
 
   scene._strongPlayer = strongPlayer
 
