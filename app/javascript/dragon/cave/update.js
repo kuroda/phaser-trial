@@ -48,6 +48,12 @@ export default function update(time, delta) {
     if (heart) {
       heart.setAlpha(0.0)
       this._player._strong = true
+      this.time.addEvent({
+        delay: 3000,
+        callback: unsetStrongFlag,
+        callbackScope: this,
+        loop: false
+      })
     }
     updateMessage(`Score: ${this.sys.game._score}`)
   }
@@ -71,4 +77,8 @@ function updateMessage(message) {
   const div = document.getElementById("message")
 
   div.textContent = message
+}
+
+function unsetStrongFlag() {
+  this._player._strong = false
 }
