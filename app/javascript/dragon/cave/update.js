@@ -4,19 +4,51 @@ export default function update(time, delta) {
   this._player.x = this._player._x * 64
   this._player.y = this._player._y * 64
 
+  if (this._player._strong) {
+    this._player.setAlpha(0.0)
+    this._strongPlayer.setAlpha(1.0)
+    this._strongPlayer.x = this._player.x
+    this._strongPlayer.y = this._player.y
+    this._strongPlayer.setFrame(this._player.frame.name)
+  }
+  else {
+    this._player.setAlpha(1.0)
+    this._strongPlayer.setAlpha(0.0)
+  }
+
   this._monsters.forEach(m => {
     m.x = m._x * 64;
     m.y = m._y * 64;
   })
 
-  const found = this._monsters.find(m => {
-    return (m._x === this._player._x) && (m._y === this._player._y)
+  this._hearts.forEach(h => {
+    h.x = h._x * 64;
+    h.y = h._y * 64;
   })
 
-  if (found) {
-    gameOver(this)
+  const monster = this._monsters.find(m => {
+    return (m.alpha === 1.0) &&
+      (m._x === this._player._x) && (m._y === this._player._y)
+  })
+
+  const heart = this._hearts.find(h => {
+    return (h.alpha === 1.0) &&
+      (h._x === this._player._x) && (h._y === this._player._y)
+  })
+
+  if (monster) {
+    if (this._player._strong) {
+      monster.setAlpha(0.0)
+    }
+    else {
+      gameOver(this)
+    }
   }
   else {
+    if (heart) {
+      heart.setAlpha(0.0)
+      this._player._strong = true
+    }
     updateMessage(`Score: ${this.sys.game._score}`)
   }
 }
